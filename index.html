@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gautam Kumar Jha</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #dfe3e1;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      color: #f4f7f5;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(43, 118, 88, 0.28), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(0, 30, 22, 0.5), rgba(1, 17, 14, 0.95) 44%),
+        #02150f;
+      padding-bottom: 30px;
+    }
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 50% 50%, transparent 16px, rgba(127, 151, 142, 0.08) 17px, transparent 22px),
+        radial-gradient(circle at 50% 50%, rgba(95, 116, 109, 0.05) 0 1px, transparent 1px);
+      background-size: 62px 62px;
+      background-position: center;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 22px 18px 0;
+    }
+    .profile-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .profile-ring {
+      width: 215px;
+      height: 215px;
+      border-radius: 50%;
+      padding: 7px;
+      background: linear-gradient(135deg, #f0a33b, #d76b00, #f8c57a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 2px rgba(255, 160, 65, 0.14);
+    }
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid rgba(4, 18, 14, 0.82);
+      background: #d0d0d0;
+    }
+
+    .badge {
+      margin: 0 auto 28px;
+      width: fit-content;
+      min-width: 245px;
+      text-align: center;
+      padding: 11px 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(18, 58, 46, 0.94), rgba(8, 38, 29, 0.94));
+      border: 1px solid rgba(28, 160, 105, 0.32);
+      box-shadow: inset 0 0 18px rgba(18, 133, 87, 0.12), 0 4px 12px rgba(0,0,0,0.18);
+      font-size: 15px;
+      font-weight: 700;
+      color: #dff4ea;
+      letter-spacing: 0.2px;
+    }
+
+    .title {
+      margin: 0;
+      text-align: center;
+      color: #f0f2ef;
+      font-size: clamp(26px, 5vw, 38px);
+      line-height: 0.94;
+      letter-spacing: 0.8px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .subtitle {
+      margin: 16px 0 26px;
+      text-align: center;
+      color: rgba(228, 236, 232, 0.82);
+      font-size: 17px;
+      line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      min-height: 118px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 16px;
+      padding: 16px 8px 14px;
+      background: linear-gradient(180deg, rgba(18, 68, 50, 0.92), rgba(8, 41, 31, 0.92));
+      border: 1px solid rgba(28, 147, 95, 0.28);
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.14);
+    }
+    .stat-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f2aa55;
+      margin-bottom: 8px;
+    }
+    .stat-text {
+      font-size: 11px;
+      line-height: 1.45;
+      color: rgba(238, 242, 239, 0.82);
+      font-weight: 500;
+    }
+
+    .telegram-link {
+      display: block;
+      text-decoration: none;
+      margin-bottom: 26px;
+    }
+    .telegram-button {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #4aa9da, #2f8ac0);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .telegram-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2b8cc7;
+      font-size: 21px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .telegram-content {
+      text-align: center;
+      color: #fff;
+    }
+    .telegram-title {
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+    .telegram-subtitle {
+      font-size: 10px;
+      line-height: 1.2;
+      opacity: 0.95;
+    }
+
+    .section-heading {
+      margin: 12px 0 16px;
+      color: rgba(214, 224, 219, 0.8);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      padding: 18px 18px 18px 16px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(16, 61, 47, 0.96), rgba(7, 38, 29, 0.96));
+      border: 1px solid rgba(24, 136, 95, 0.32);
+      box-shadow: inset 0 0 18px rgba(0,0,0,0.14);
+      margin-bottom: 12px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      min-width: 12px;
+      border-radius: 50%;
+      background: #f0a750;
+      margin-right: 16px;
+      box-shadow: 0 0 10px rgba(240, 167, 80, 0.25);
+    }
+    .feature-text {
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: rgba(245, 247, 246, 0.97);
+    }
+
+    @media (max-width: 420px) {
+      .page { max-width: 100%; }
+      .title { font-size: 30px; }
+      .subtitle { font-size: 15px; }
+      .stat-title { font-size: 16px; }
+      .feature-text { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="container">
+      <div class="profile-wrapper">
+        <div class="profile-ring">
+          <img class="profile-image" src="image.png" alt="Profile" />
+        </div>
+      </div>
+
+      <div class="badge">🇮🇳 Free Educational Community</div>
+
+      <h1 class="title">Gautam Kumar Jha</h1>
+      <p class="subtitle">Simple Market Analysis &amp; Daily Updates</p>
+
+      <section class="stats">
+        <div class="stat-card">
+          <div class="stat-title">100% Free</div>
+          <div class="stat-text">No Hidden Charges</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Daily</div>
+          <div class="stat-text">Hindi &amp; English<br />Analysis</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Active</div>
+          <div class="stat-text">Live Community</div>
+        </div>
+      </section>
+
+      <a class="telegram-link" href="https://t.me/+g2OqcxsT9c9iZjll" target="_blank" rel="noopener noreferrer">
+        <div class="telegram-button">
+          <div class="telegram-icon">✈</div>
+          <div class="telegram-content">
+            <div class="telegram-title">Join Telegram Channel</div>
+            <div class="telegram-subtitle">Telegram पर फ्री जॉइन करने के लिए क्लिक करें</div>
+          </div>
+        </div>
+      </a>
+
+      <div class="section-heading">WHY JOIN US? / क्यों जुड़ें?</div>
+
+      <div class="feature">
+        <div class="dot"></div>
+        <div class="feature-text">Educational Market Insights &amp; Commentary</div>
+      </div>
+
+      <div class="feature">
+        <div class="dot"></div>
+        <div class="feature-text">Educational Concepts on Price Action &amp; Charting<br />(हिंदी/English)</div>
+      </div>
+
+      <div class="feature">
+        <div class="dot"></div>
+        <div class="feature-text">Risk Management &amp; Trading Discipline Guidance</div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
